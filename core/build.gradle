@@ -1,0 +1,24 @@
+plugins {
+    id "java-library"
+    id "org.jetbrains.kotlin.jvm"
+    id "maven-publish"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId = "com.oxy.otto"
+                artifactId = "core"
+                version = "0.1.0-alpha01"
+
+                from components.java
+            }
+        }
+    }
+}
