@@ -1,5 +1,7 @@
 # OTTO - Kotlin File Download Framework
 
+[![](https://jitpack.io/v/thxbrop/otto.svg)](https://jitpack.io/#thxbrop/otto)
+
 ## How to use?
 
 ```kotlin
