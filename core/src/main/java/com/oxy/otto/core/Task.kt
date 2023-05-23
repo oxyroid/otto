@@ -2,8 +2,8 @@ package com.oxy.otto.core
 
 import java.io.FileOutputStream
 
-class Task {
-    var url: String? = null
+class Task private constructor() {
+    var data: String? = null
         internal set
     var output: FileOutputStream? = null
         internal set
@@ -17,8 +17,8 @@ class Task {
     class Builder {
         private val task: Task = Task()
         fun build(): Task = task
-        fun setUrl(url: String): Builder = this.apply {
-            task.url = url
+        fun setData(data: String): Builder = this.apply {
+            task.data = data
         }
 
         fun setOutput(output: FileOutputStream): Builder = this.apply {
@@ -40,7 +40,8 @@ class Task {
 
     data class Snapshot(
         val total: Long,
-        val count: Int
+        val count: Int,
+        val contentLength: Long
     )
 }
 

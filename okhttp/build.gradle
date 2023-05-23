@@ -5,8 +5,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
@@ -15,4 +15,20 @@ dependencies {
     api(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
     api("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId = "com.oxy.otto"
+                artifactId = "okhttp"
+                version = rootProject.ext.version
+
+                from components.java
+            }
+        }
+    }
 }

@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/okhttp" />
+            <option value="$PROJECT_DIR$/source-android" />
           </set>
         </option>
       </GradleProjectSettings>

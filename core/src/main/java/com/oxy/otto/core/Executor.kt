@@ -1,5 +1,5 @@
 package com.oxy.otto.core
 
 interface Executor {
-    fun execute(task: Task)
+    fun execute(source: TaskSource?, task: Task)
 }

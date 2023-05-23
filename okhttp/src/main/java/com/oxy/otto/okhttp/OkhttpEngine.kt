@@ -4,7 +4,7 @@ import com.oxy.otto.core.Engine
 import com.oxy.otto.core.Executor
 import okhttp3.OkHttpClient
 
-class OkhttpEngine : Engine by OkhttpEngine(
+object OkhttpEngine : Engine by OkhttpEngine(
     client = OkHttpClient.Builder().build()
 )
 
