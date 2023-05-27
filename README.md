@@ -43,6 +43,6 @@ allprojects {
 
 ```groovy
 dependencies {
-  implementation 'com.github.thxbrop:otto:${latest_version}'
+  implementation 'com.github.realOxy:otto:${latest_version}'
 }
 ```
