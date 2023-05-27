@@ -1,17 +1,15 @@
 package com.oxy.otto.core
 
-import java.io.FileOutputStream
+import okio.Sink
 
 class Task private constructor() {
     var data: String? = null
         internal set
-    var output: FileOutputStream? = null
+    var sink: Sink? = null
         internal set
     var receiver: SnapshotReceiver? = null
         internal set
-    var buffer: Int = 1024
-        internal set
-    var singleton: Boolean = false
+    var buffer: Long = 1024
         internal set
 
     class Builder {
@@ -21,26 +19,18 @@ class Task private constructor() {
             task.data = data
         }
 
-        fun setOutput(output: FileOutputStream): Builder = this.apply {
-            task.output = output
+        fun setSink(sink: Sink): Builder = this.apply {
+            task.sink = sink
         }
 
-        fun setSnapshotReceiver(
-            buffer: Int = 1024,
-            receiver: SnapshotReceiver
-        ): Builder = this.apply {
-            task.buffer = buffer
+        fun setSnapshotReceiver(receiver: SnapshotReceiver): Builder = this.apply {
             task.receiver = receiver
-        }
-
-        fun setSingleton(singleton: Boolean): Builder = this.apply {
-            task.singleton = singleton
         }
     }
 
     data class Snapshot(
         val total: Long,
-        val count: Int,
+        val buffer: Long,
         val contentLength: Long
     )
 }

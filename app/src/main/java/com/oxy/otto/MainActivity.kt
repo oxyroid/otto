@@ -13,10 +13,10 @@ import androidx.lifecycle.lifecycleScope
 import com.oxy.otto.core.Client
 import com.oxy.otto.core.Task
 import com.oxy.otto.okhttp.OkhttpEngine
-import com.oxy.otto.source.AndroidTaskSource
 import com.oxy.otto.ui.theme.OttoTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okio.sink
 import java.io.File
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +27,6 @@ class MainActivity : ComponentActivity() {
 
         val client = Client.Builder()
             .setEngine(OkhttpEngine)
-            .setTaskSource(AndroidTaskSource(applicationContext))
             .setDispatcher(Dispatchers.IO)
             .build()
         val file = File(applicationContext.filesDir, "big_buck_bunny.mp4")
@@ -35,7 +34,7 @@ class MainActivity : ComponentActivity() {
 
         val task = Task.Builder()
             .setData("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-            .setOutput(file.outputStream())
+            .setSink(file.outputStream().sink())
             .setSnapshotReceiver { snapshot ->
                 text.value = snapshot
             }

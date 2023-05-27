@@ -6,11 +6,10 @@ import kotlinx.coroutines.withContext
 
 class Client {
     private var engine: Engine? = null
-    private var source: TaskSource? = null
     private var dispatcher: CoroutineDispatcher = Dispatchers.IO
     suspend fun execute(task: Task) {
         withContext(dispatcher) {
-            engine?.executor?.execute(source, task)
+            engine?.executor?.execute(task)
         }
     }
 
@@ -22,11 +21,6 @@ class Client {
 
         fun setEngine(engine: Engine): Builder {
             client.engine = engine
-            return this
-        }
-
-        fun setTaskSource(source: TaskSource): Builder {
-            client.source = source
             return this
         }
 
