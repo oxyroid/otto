@@ -5,9 +5,9 @@
 ## How to use?
 
 ```kotlin
+// JVM
 val client = Client.Builder()
     .setEngine(OkhttpEngine)
-    .setTaskSource(AndroidTaskSource(applicationContext))
     .setDispatcher(Dispatchers.IO)
     .build()
 
@@ -16,7 +16,7 @@ if (!file.exists()) file.createNewFile()
 
 val task = Task.Builder()
     .setData("http://yourwebsite.com/video.mp4")
-    .setOutput(file.outputStream())
+    .setSink(file.outputStream().sink())
     .setSnapshotReceiver { snapshot ->
         // subscribe snapshots during the task.
     }
